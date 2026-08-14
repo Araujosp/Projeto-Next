@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./page.module.css"
+import styles from "./page.module.css"
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -20,24 +20,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
-        
-      <header className={"header"}>
-        <img src="/img/AWS.png" className={"imgLogo"} alt="AWS"/>
-        <nav className={"menu"}>
-          <ul>
-            <li> <Link href={"/"}>página inicial</Link></li>
-            <li> <Link href={"/sobre"}>Product</Link></li>
-            <li>Contact</li>
-            <li>Solutions</li>
-            <li>Learn</li>
-          </ul>
-        </nav>
-        <div className={"botoes"}>
-          <p className={"btn2"}>Log In</p>
-          <p className={"btn"}>Start My Free Trial</p>
-        </div>
-      </header>
+      <body>  
+      <header className="header">
+              <img src="/img/AWS.png" className="imgLogo" alt="AWS"/>
+              <nav className="menu">
+                <ul>
+                  <li> <Link href = {"/sobre/empresa"}>Product</Link></li>
+                  <li>Pricing</li>
+                  <li><Link href = {"/"}>Página Inicial</Link></li>
+                  <li><Link href = {"/sobre"}> Sobre AWS </Link> </li>
+                  <li>Learn</li>
+                </ul>
+              </nav>
+              <div className="botoes">
+                <p className="btn2">Log In</p>
+                <p className="btn">Start My Free Trial</p>
+              </div>
+            </header>
 
         {children}
         
