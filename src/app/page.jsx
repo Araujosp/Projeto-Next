@@ -2,13 +2,15 @@ import Image from "next/image";
 import styles from "./globals.css";
 import Link from "next/link";
 import { resolve } from "styled-jsx/css";
+import BannerCta from "@/components/bannerCTA";
+
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function Home() {
   
-  await sleep(3500);
-  throw new Error("Erro de teste!");
+  await sleep(2000);
+  /* throw new Error("Erro de teste!");*/
   
 
   return (
@@ -40,8 +42,9 @@ export default async function Home() {
           className="mulher"
           alt="Profissional utilizando serviços de computação em nuvem"
         />
-
       </main>
+        <BannerCta/>
+        <FooterCTA/>
     </>
   );
 }
