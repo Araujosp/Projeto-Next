@@ -1,8 +1,15 @@
 import Image from "next/image";
 import styles from "./globals.css";
 import Link from "next/link";
+import { resolve } from "styled-jsx/css";
 
-export default function Home() {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+
+export default async function Home() {
+
+  await sleep(3500);
+
   return (
     <>
       
