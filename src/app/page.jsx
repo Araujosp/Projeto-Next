@@ -5,10 +5,11 @@ import { resolve } from "styled-jsx/css";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-
 export default async function Home() {
-
+  
   await sleep(3500);
+  throw new Error("Erro de teste!");
+  
 
   return (
     <>
