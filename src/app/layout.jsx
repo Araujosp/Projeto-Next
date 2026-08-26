@@ -39,8 +39,7 @@ export default function RootLayout({ children }) {
             </header>
 
         {children}
-        
-       <footerCTA/>
+      
         
         </body> 
     </html>

@@ -5,6 +5,8 @@ import { resolve } from "styled-jsx/css";
 import BannerCta from "@/components/bannerCTA";
 
 
+
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function Home() {
@@ -15,7 +17,7 @@ export default async function Home() {
 
   return (
     <>
-      
+
       <main className="main">
 
         <div className="textServices">
@@ -44,7 +46,6 @@ export default async function Home() {
         />
       </main>
         <BannerCta/>
-        <FooterCTA/>
     </>
   );
 }
