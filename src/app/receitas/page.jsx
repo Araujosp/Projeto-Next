@@ -1,36 +1,42 @@
 "use client";
-import "../globals.css"
-
 
 import { useEffect, useState } from "react";
-import dados from "@/dados.json"
+import CardReceita from "@/app/receitas/components/CardReceita.jsx";
+import "./receitas.css";
 
-export default function Receitas() {
-    const [receitas, setReceitas] = useState([]);
-    useEffect ( () => {
-        setFilmes(dados);
-    }, []);
+export default function PaginaReceitas() {
+  const [receitas, setReceitas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState("");
 
-    return (
-        <main>
-            <h1>Listagem de todos os filmes</h1>
+  useEffect(() => {
+    fetch("https://dummyjson.com/recipes")
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro ao carregar receitas");
+        return res.json();
+      })
+      .then((data) => {
+        setReceitas(data.recipes);
+      })
+      .catch((err) => setErro(err.message))
+      .finally(() => setLoading(false));
+  }, []);
 
-            {filmes.length > 0 && (
-                <div className="container-filmes">
-                    <div>
-                        {filmes.map((f) => {
-                            return (
-                                <div key={f.id}>
-                                    <img src={f.imagem} alt="" />
-                                    <h3>{f.titulo}</h3>
-                                    <a href={`/filmes/${f.id}`}> Saiba mais... </a>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-        </main>
-    );
+  if (loading) return <div className="carregando">Carregando receitas...</div>;
+  if (erro) return <div className="erro">Erro: {erro}</div>;
+
+  return (
+    <main className="container-pagina">
+      <header className="cabecalho">
+        <h1>Receitas Especiais</h1>
+        <p>Explore as melhores receitas da nossa comunidade</p>
+      </header>
+
+      <div className="grid-receitas">
+        {receitas.map((receita) => (
+          <CardReceita key={receita.id} receita={receita} />
+        ))}
+      </div>
+    </main>
+  );
 }
-
